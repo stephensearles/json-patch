@@ -261,7 +261,11 @@ func findObject(pd *partialDoc, path string) (container, string) {
 
 	split := strings.Split(path, "/")
 
-	parts := split[1 : len(split)-1]
+	if len(split) <= 1 {
+		return nil, ""
+	}
+
+	parts := split[1:]
 
 	key := split[len(split)-1]
 
